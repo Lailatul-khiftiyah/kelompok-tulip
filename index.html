@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kuis Literasi Keuangan</title>
+</head>
+<body>
+
+<h1>Kuis Literasi Keuangan</h1>
+
+<p id="soal"></p>
+
+<button onclick="jawab('A')" id="a"></button>
+<button onclick="jawab('B')" id="b"></button>
+<button onclick="jawab('C')" id="c"></button>
+
+<p id="hasil"></p>
+
+<script>
+const soal = [
+{
+    pertanyaan: "Apa arti menabung?",
+    A: "Menghabiskan uang",
+    B: "Menyimpan uang untuk masa depan",
+    C: "Meminjam uang",
+    benar: "B"
+},
+{
+    pertanyaan: "Apa manfaat anggaran keuangan?",
+    A: "Pengeluaran lebih terkontrol",
+    B: "Uang cepat habis",
+    C: "Tidak perlu menabung",
+    benar: "A"
+}
+];
+
+let nomor = 0;
+let skor = 0;
+
+function tampilkanSoal() {
+    document.getElementById("soal").innerHTML = soal[nomor].pertanyaan;
+    document.getElementById("a").innerHTML = "A. " + soal[nomor].A;
+    document.getElementById("b").innerHTML = "B. " + soal[nomor].B;
+    document.getElementById("c").innerHTML = "C. " + soal[nomor].C;
+}
+
+function jawab(pilihan) {
+    if (pilihan === soal[nomor].benar) {
+        document.getElementById("hasil").innerHTML = "✅ Jawaban Benar";
+        skor++;
+    } else {
+        document.getElementById("hasil").innerHTML = "❌ Jawaban Salah";
+    }
+
+    setTimeout(() => {
+        nomor++;
+
+        if (nomor < soal.length) {
+            document.getElementById("hasil").innerHTML = "";
+            tampilkanSoal();
+        } else {
+            document.body.innerHTML =
+            "<h1>Kuis Selesai</h1>" +
+            "<h2>Skor: " + skor + "/" + soal.length + "</h2>";
+        }
+    }, 1000);
+}
+
+tampilkanSoal();
+</script>
+
+</body>
+  </html>
