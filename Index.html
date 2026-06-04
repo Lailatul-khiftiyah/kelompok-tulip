@@ -4,44 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuis Literasi Keuangan</title>
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 30px;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-        }
-
-        button {
-            display: block;
-            width: 100%;
-            margin: 10px 0;
-            padding: 12px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        #result {
-            font-size: 20px;
-            font-weight: bold;
-            margin-top: 15px;
-        }
-
-        #score {
-            font-size: 22px;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 <body>
 
@@ -57,77 +19,6 @@
     <p id="result"></p>
     <p id="score"></p>
 </div>
-
-<script>
-const questions = [
-{
-    question: "Apa yang dimaksud dengan menabung?",
-    A: "Menghabiskan uang untuk belanja",
-    B: "Menyisihkan sebagian uang untuk kebutuhan masa depan",
-    C: "Meminjam uang dari teman",
-    answer: "B"
-},
-{
-    question: "Mengapa kita perlu membuat anggaran keuangan?",
-    A: "Agar pengeluaran lebih terkontrol",
-    B: "Agar bisa menghabiskan uang lebih cepat",
-    C: "Agar tidak perlu menabung",
-    answer: "A"
-},
-{
-    question: "Apa manfaat utama memiliki dana darurat?",
-    A: "Untuk kebutuhan tak terduga",
-    B: "Untuk membeli barang mewah",
-    C: "Untuk hiburan",
-    answer: "A"
-}
-];
-
-let currentQuestion = 0;
-let score = 0;
-
-function loadQuestion() {
-    document.getElementById("result").innerHTML = "";
-
-    let q = questions[currentQuestion];
-
-    document.getElementById("question").innerHTML =
-        (currentQuestion + 1) + ". " + q.question;
-
-    document.getElementById("A").innerHTML = "A. " + q.A;
-    document.getElementById("B").innerHTML = "B. " + q.B;
-    document.getElementById("C").innerHTML = "C. " + q.C;
-}
-
-function checkAnswer(choice) {
-    let q = questions[currentQuestion];
-
-    if (choice === q.answer) {
-        document.getElementById("result").innerHTML =
-            "✅ Jawaban Benar!";
-        score++;
-    } else {
-        document.getElementById("result").innerHTML =
-            "❌ Jawaban Salah!";
-    }
-
-    setTimeout(() => {
-        currentQuestion++;
-
-        if (currentQuestion < questions.length) {
-            loadQuestion();
-        } else {
-            document.querySelector(".container").innerHTML =
-                "<h1>Kuis Selesai</h1>" +
-                "<p id='score'>Skor Anda: " +
-                score + "/" + questions.length +
-                "</p>";
-        }
-    }, 1000);
-}
-
-loadQuestion();
-</script>
 
 </body>
 </html>
